@@ -1,0 +1,37 @@
+{
+  "run_id": "eval-2-forge-pricing-with_skill",
+  "expectations": [
+    {
+      "text": "All 3 tiers present with correct prices: $0, $19, $79",
+      "passed": true,
+      "evidence": "Tier headers show $0, $19, $79 with /mo suffix. All tier names (Hobbyist, Pro, Team) present."
+    },
+    {
+      "text": "Does NOT use a standard 3-card side-by-side grid as the ONLY layout structure",
+      "passed": true,
+      "evidence": "Uses a feature comparison table layout with labeled rows and section headers — NOT cards. Grid structure is grid-template-columns: 260px repeat(3, 1fr) with horizontal feature rows."
+    },
+    {
+      "text": "Does NOT use purple/violet as the primary accent color",
+      "passed": true,
+      "evidence": "Primary accent is --highlight: #c8f135 (acid lime/yellow-green). No purple anywhere in the stylesheet."
+    },
+    {
+      "text": "Uses a monospace or developer-appropriate font (not Inter/Roboto)",
+      "passed": true,
+      "evidence": "Primary font is 'JetBrains Mono' (monospace, developer IDE font). Display headings use 'Syne'. Neither Inter nor Roboto."
+    },
+    {
+      "text": "Includes CSS custom properties for theming",
+      "passed": true,
+      "evidence": ":root defines --bg, --surface, --border, --text, --muted, --green, --amber, --red, --highlight. Used throughout."
+    },
+    {
+      "text": "Layout/design feels authentically developer-focused (terminal aesthetics, code-like elements, etc.)",
+      "passed": true,
+      "evidence": "Terminal scanline texture overlay, blinking cursor animation on logo, CLI-style prompt ('forge billing --list-plans'), CTA buttons labeled as CLI commands ('forge init --free'), JetBrains Mono throughout. Unmistakably developer-native."
+    }
+  ],
+  "pass_rate": 1.0,
+  "notes": "6/6. Terminal aesthetic: JetBrains Mono, acid lime accent, CLI command buttons, feature comparison table instead of cards, scanline texture."
+}

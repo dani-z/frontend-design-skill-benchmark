@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lumen — Async Standups, Reimagined</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0d0d0a;
+    --paper: #f5f0e8;
+    --accent: #c8432a;
+    --muted: #8a8070;
+    --warm-white: #faf8f3;
+    --rule: rgba(13,13,10,0.12);
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─────────────────────────────── */
+  nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 28px 64px;
+    border-bottom: 1px solid var(--rule);
+    position: sticky; top: 0; z-index: 100;
+    background: var(--paper);
+    backdrop-filter: blur(8px);
+  }
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px; font-weight: 900; letter-spacing: -0.5px;
+    color: var(--ink);
+  }
+  .logo span { color: var(--accent); }
+  nav ul { list-style: none; display: flex; gap: 40px; align-items: center; }
+  nav a { text-decoration: none; color: var(--muted); font-size: 14px; font-weight: 400; letter-spacing: 0.02em; transition: color 0.2s; }
+  nav a:hover { color: var(--ink); }
+  .nav-cta {
+    font-family: 'DM Mono', monospace;
+    background: var(--ink); color: var(--paper) !important;
+    padding: 10px 20px; font-size: 12px !important; letter-spacing: 0.08em !important;
+    border: none; cursor: pointer;
+  }
+
+  /* ─── HERO ────────────────────────────── */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 88vh;
+    border-bottom: 1px solid var(--rule);
+  }
+  .hero-left {
+    padding: 80px 64px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    border-right: 1px solid var(--rule);
+    animation: fadeUp 0.9s ease both;
+  }
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--muted); display: flex; align-items: center; gap: 12px;
+  }
+  .hero-eyebrow::before { content: ''; display: block; width: 32px; height: 1px; background: var(--muted); }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(56px, 6vw, 88px);
+    font-weight: 900; line-height: 1.0;
+    letter-spacing: -2px;
+    margin: 48px 0;
+  }
+  .hero h1 em { font-style: italic; color: var(--accent); }
+  .hero-tagline {
+    font-size: 17px; font-weight: 300; color: var(--muted);
+    line-height: 1.7; max-width: 380px;
+  }
+  .hero-actions {
+    display: flex; gap: 16px; align-items: center; margin-top: 48px;
+  }
+  .btn-primary {
+    background: var(--accent); color: var(--warm-white);
+    padding: 16px 32px; font-family: 'DM Mono', monospace;
+    font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+    text-decoration: none; display: inline-block;
+    transition: opacity 0.2s;
+  }
+  .btn-primary:hover { opacity: 0.88; }
+  .btn-ghost {
+    color: var(--muted); text-decoration: none;
+    font-size: 13px; display: flex; align-items: center; gap: 8px;
+    transition: color 0.2s;
+  }
+  .btn-ghost:hover { color: var(--ink); }
+  .btn-ghost::after { content: '→'; transition: transform 0.2s; }
+  .btn-ghost:hover::after { transform: translateX(4px); }
+
+  .hero-right {
+    padding: 64px;
+    background: var(--warm-white);
+    display: flex; flex-direction: column; justify-content: center;
+    animation: fadeUp 0.9s 0.15s ease both;
+    position: relative; overflow: hidden;
+  }
+  .standup-card {
+    background: var(--paper); border: 1px solid var(--rule);
+    padding: 32px; margin-bottom: 16px;
+    position: relative;
+  }
+  .standup-card:nth-child(2) { transform: translateX(24px); }
+  .standup-card:nth-child(3) { transform: translateX(48px); }
+  .card-meta {
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 12px; display: flex; gap: 16px;
+  }
+  .card-user { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+  .avatar {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--ink); display: flex; align-items: center;
+    justify-content: center; font-size: 11px; color: var(--paper);
+    font-family: 'DM Mono', monospace;
+  }
+  .card-name { font-size: 13px; font-weight: 500; }
+  .card-body { font-size: 14px; color: var(--muted); line-height: 1.6; }
+  .card-tag {
+    display: inline-block; margin-top: 12px;
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    padding: 3px 8px; border: 1px solid var(--rule);
+    color: var(--muted); letter-spacing: 0.06em;
+  }
+  .card-tag.blocker { border-color: var(--accent); color: var(--accent); }
+
+  /* ─── STATS ROW ───────────────────────── */
+  .stats {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    border-bottom: 1px solid var(--rule);
+    animation: fadeUp 0.9s 0.3s ease both;
+  }
+  .stat {
+    padding: 48px 56px;
+    border-right: 1px solid var(--rule);
+  }
+  .stat:last-child { border-right: none; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px; font-weight: 700; letter-spacing: -2px;
+    line-height: 1; margin-bottom: 8px;
+  }
+  .stat-label {
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase;
+  }
+
+  /* ─── FEATURES ────────────────────────── */
+  .features { padding: 0; }
+  .features-header {
+    padding: 80px 64px 60px;
+    border-bottom: 1px solid var(--rule);
+    display: flex; align-items: flex-end; justify-content: space-between;
+    animation: fadeUp 0.9s 0.4s ease both;
+  }
+  .features-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 52px; font-weight: 700; letter-spacing: -1.5px;
+    max-width: 500px; line-height: 1.1;
+  }
+  .features-header p {
+    font-size: 15px; color: var(--muted); font-weight: 300;
+    max-width: 260px; line-height: 1.7; text-align: right;
+  }
+  .features-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+  }
+  .feature {
+    padding: 56px;
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    transition: background 0.3s;
+    animation: fadeUp 0.9s ease both;
+  }
+  .feature:hover { background: var(--warm-white); }
+  .feature:nth-child(3n) { border-right: none; }
+  .feature-num {
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    color: var(--muted); letter-spacing: 0.15em; margin-bottom: 40px;
+  }
+  .feature h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px; font-weight: 700; letter-spacing: -0.5px;
+    margin-bottom: 16px; line-height: 1.2;
+  }
+  .feature p { font-size: 14px; color: var(--muted); line-height: 1.75; font-weight: 300; }
+
+  /* ─── CTA ─────────────────────────────── */
+  .cta {
+    background: var(--ink); color: var(--paper);
+    display: grid; grid-template-columns: 1fr 1fr;
+    min-height: 480px;
+  }
+  .cta-left {
+    padding: 96px 64px;
+    border-right: 1px solid rgba(255,255,255,0.08);
+    animation: fadeUp 0.9s ease both;
+  }
+  .cta-left h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 56px; font-weight: 900; letter-spacing: -2px;
+    line-height: 1.0; margin-bottom: 32px;
+  }
+  .cta-left h2 em { font-style: italic; color: var(--accent); }
+  .cta-left p { font-size: 16px; color: rgba(245,240,232,0.6); font-weight: 300; line-height: 1.7; margin-bottom: 48px; }
+  .btn-light {
+    background: var(--accent); color: var(--warm-white);
+    padding: 16px 36px; font-family: 'DM Mono', monospace;
+    font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+    text-decoration: none; display: inline-block;
+    transition: opacity 0.2s;
+  }
+  .btn-light:hover { opacity: 0.85; }
+  .cta-right {
+    padding: 96px 64px;
+    display: flex; flex-direction: column; justify-content: center;
+    animation: fadeUp 0.9s 0.2s ease both;
+  }
+  .testimonial {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-style: italic;
+    line-height: 1.55; color: rgba(245,240,232,0.85);
+    margin-bottom: 32px;
+  }
+  .testimonial-attr {
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(245,240,232,0.4);
+  }
+
+  /* ─── FOOTER ──────────────────────────── */
+  footer {
+    padding: 28px 64px;
+    border-top: 1px solid var(--rule);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  footer p { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); letter-spacing: 0.06em; }
+
+  /* ─── ANIMATIONS ──────────────────────── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .stats { grid-template-columns: 1fr 1fr; }
+    .features-grid { grid-template-columns: 1fr; }
+    .cta { grid-template-columns: 1fr; }
+    nav { padding: 20px 24px; }
+    .hero-left { padding: 48px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Lum<span>e</span>n</div>
+  <ul>
+    <li><a href="#">How it works</a></li>
+    <li><a href="#">Pricing</a></li>
+    <li><a href="#">Changelog</a></li>
+    <li><a href="#" class="nav-cta">Start free →</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Async communication, rebuilt</div>
+    <h1>Stand up.<br><em>Without</em><br>standing up.</h1>
+    <p class="hero-tagline">Lumen gives remote teams a better way to stay aligned — structured async updates that respect focus time, time zones, and actual human schedules.</p>
+    <div class="hero-actions">
+      <a href="#" class="btn-primary">Start for free</a>
+      <a href="#" class="btn-ghost">See how it works</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="standup-card" style="animation: fadeUp 0.9s 0.3s ease both; opacity:0; animation-fill-mode:both;">
+      <div class="card-meta"><span>Today · 9:14 AM</span><span>Engineering</span></div>
+      <div class="card-user"><div class="avatar">SJ</div><div class="card-name">Sara Jensen</div></div>
+      <div class="card-body">Finished the auth refactor, moving on to payment webhook integration. All tests green.</div>
+      <div class="card-tag">✓ On track</div>
+    </div>
+    <div class="standup-card" style="animation: fadeUp 0.9s 0.45s ease both; opacity:0; animation-fill-mode:both;">
+      <div class="card-meta"><span>Today · 10:02 AM</span><span>Engineering</span></div>
+      <div class="card-user"><div class="avatar">MK</div><div class="card-name">Marcus Kim</div></div>
+      <div class="card-body">Stuck on the Stripe webhook signature validation. Need someone to review the config.</div>
+      <div class="card-tag blocker">⚑ Blocker</div>
+    </div>
+    <div class="standup-card" style="animation: fadeUp 0.9s 0.6s ease both; opacity:0; animation-fill-mode:both;">
+      <div class="card-meta"><span>Today · 11:30 AM</span><span>Design</span></div>
+      <div class="card-user"><div class="avatar">PR</div><div class="card-name">Priya Rao</div></div>
+      <div class="card-body">Shipped the onboarding flow designs to Figma. Working on empty states next.</div>
+      <div class="card-tag">✓ On track</div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stat"><div class="stat-num">5k+</div><div class="stat-label">Teams using Lumen</div></div>
+  <div class="stat"><div class="stat-num">83%</div><div class="stat-label">Fewer unnecessary meetings</div></div>
+  <div class="stat"><div class="stat-num">2min</div><div class="stat-label">Average update time</div></div>
+  <div class="stat"><div class="stat-num">4.9★</div><div class="stat-label">Average rating</div></div>
+</div>
+
+<section class="features">
+  <div class="features-header">
+    <h2>Built for teams that<br>actually work.</h2>
+    <p>Every feature is designed around how distributed teams communicate — not how office teams used to.</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature" style="animation-delay:0.1s">
+      <div class="feature-num">01</div>
+      <h3>Timezone-aware reminders</h3>
+      <p>Nudges go out at the right local time for each team member. No 3 AM pings, no missed updates from someone in another continent.</p>
+    </div>
+    <div class="feature" style="animation-delay:0.2s">
+      <div class="feature-num">02</div>
+      <h3>Structured, not freeform</h3>
+      <p>Guided prompts keep updates consistent. What did you do, what's next, what's blocking you — every time, from everyone.</p>
+    </div>
+    <div class="feature" style="animation-delay:0.3s">
+      <div class="feature-num">03</div>
+      <h3>Live work context</h3>
+      <p>Connects to GitHub, Jira, Linear. Your commits and issues surface automatically so you spend less time writing and more time doing.</p>
+    </div>
+    <div class="feature" style="animation-delay:0.4s">
+      <div class="feature-num">04</div>
+      <h3>Blocker triage</h3>
+      <p>Blockers get flagged and routed to the right people instantly. Managers see what needs attention without reading every update.</p>
+    </div>
+    <div class="feature" style="animation-delay:0.5s">
+      <div class="feature-num">05</div>
+      <h3>Digest digests</h3>
+      <p>One clean summary per day, per team. Read it in 90 seconds, know exactly where everything stands.</p>
+    </div>
+    <div class="feature" style="animation-delay:0.6s">
+      <div class="feature-num">06</div>
+      <h3>Threads, not noise</h3>
+      <p>Reply directly to an update. Conversations stay attached to context — not buried in a Slack channel from three days ago.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="cta-left">
+    <h2>Your team deserves<br><em>better</em> mornings.</h2>
+    <p>No more 9 AM calls. No more "let's take this offline." Just clear, async updates that keep everyone moving — on their own time.</p>
+    <a href="#" class="btn-light">Get started free</a>
+  </div>
+  <div class="cta-right">
+    <div class="testimonial">"We canceled our daily standup after two weeks with Lumen. The team is happier, more focused, and somehow better informed."</div>
+    <div class="testimonial-attr">— Theodora Maass, VP Engineering @ Meridian</div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Lumen, Inc.</p>
+  <p>Privacy · Terms · Status</p>
+</footer>
+
+</body>
+</html>

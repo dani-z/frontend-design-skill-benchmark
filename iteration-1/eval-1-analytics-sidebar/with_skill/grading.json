@@ -1,0 +1,37 @@
+{
+  "run_id": "eval-1-analytics-sidebar-with_skill",
+  "expectations": [
+    {
+      "text": "Does NOT import external UI libraries (MUI, Chakra, Ant Design, etc.) — pure React with inline styles or minimal CSS",
+      "passed": true,
+      "evidence": "Only imports React and useRef. All styling via inline styles and a <style> tag with a @keyframes declaration. No external component libraries."
+    },
+    {
+      "text": "Includes all 4 metrics: DAU (4,231), Revenue ($12,840), Churn (2.1%), NPS (67)",
+      "passed": true,
+      "evidence": "metrics array explicitly contains all 4: display: '4,231', '$12,840', '2.1%', '67'. All rendered via MetricRow."
+    },
+    {
+      "text": "Includes an SVG sparkline component (not just dots or bars)",
+      "passed": true,
+      "evidence": "Sparkline component renders an SVG <path> element using 'M'/'L' path commands from data points. Includes terminal dot at last point."
+    },
+    {
+      "text": "Churn rate decrease is correctly flagged as positive/good (not red)",
+      "passed": true,
+      "evidence": "isInverse: true on churn metric. isGood = isInverse ? change < 0 : change > 0 — churn's -0.3 change evaluates to isGood = true. Renders green (PALETTE.up = #1a6b3c)."
+    },
+    {
+      "text": "Does NOT use Inter or system-ui as the primary font (uses a distinctive/alternative font)",
+      "passed": true,
+      "evidence": "Imports DM Mono and Playfair Display from Google Fonts. Numbers rendered in Playfair Display (serif), labels in DM Mono. No Inter or system-ui."
+    },
+    {
+      "text": "Has a clear aesthetic direction beyond generic dark dashboard",
+      "passed": true,
+      "evidence": "Editorial/newspaper register: warm paper background (#f7f4ef), serif numbers (Playfair Display), monospace labels (DM Mono), no rounded corners, ink-on-paper color palette. Completely different from typical dark blue dashboard."
+    }
+  ],
+  "pass_rate": 1.0,
+  "notes": "All 6 pass. Unusual editorial aesthetic for a sidebar — warm paper bg, serif numerals, monospace labels. Very distinctive."
+}

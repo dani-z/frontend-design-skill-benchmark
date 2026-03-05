@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forge CLI — Pricing</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: #0a0a0f; color: #e2e8f0; }
+
+  /* Nav */
+  nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 80px; border-bottom: 1px solid #1e293b; }
+  .logo { font-size: 20px; font-weight: 700; color: #fff; }
+  nav a { color: #94a3b8; text-decoration: none; font-size: 14px; margin-left: 32px; }
+
+  /* Header */
+  .header { text-align: center; padding: 80px 40px 60px; }
+  .header h1 { font-size: 48px; font-weight: 800; color: #fff; margin-bottom: 16px; }
+  .header p { font-size: 18px; color: #94a3b8; max-width: 480px; margin: 0 auto; }
+
+  /* Pricing grid */
+  .pricing { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1080px; margin: 0 auto; padding: 0 40px 100px; }
+
+  .plan {
+    background: #111827;
+    border: 1px solid #1e293b;
+    border-radius: 16px;
+    padding: 40px 32px;
+    position: relative;
+    transition: border-color 0.2s;
+  }
+  .plan:hover { border-color: #334155; }
+  .plan.featured {
+    border-color: #6366f1;
+    background: linear-gradient(145deg, #1a1040 0%, #111827 100%);
+  }
+  .badge {
+    position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+    background: #6366f1; color: #fff; font-size: 11px; font-weight: 600;
+    padding: 4px 14px; border-radius: 20px; letter-spacing: 0.06em; text-transform: uppercase;
+  }
+
+  .plan-name { font-size: 14px; font-weight: 600; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; }
+  .price { font-size: 52px; font-weight: 800; color: #fff; line-height: 1; }
+  .price span { font-size: 20px; color: #94a3b8; font-weight: 400; }
+  .plan-desc { color: #64748b; font-size: 14px; margin: 16px 0 32px; line-height: 1.6; }
+
+  .features { list-style: none; margin-bottom: 36px; }
+  .features li { display: flex; align-items: center; gap: 10px; padding: 8px 0; font-size: 14px; color: #cbd5e1; border-bottom: 1px solid #1e293b; }
+  .features li::before { content: '✓'; color: #22c55e; font-weight: 700; flex-shrink: 0; }
+  .features li.dim { color: #475569; }
+  .features li.dim::before { color: #334155; content: '—'; }
+
+  .plan-btn {
+    display: block; width: 100%; padding: 14px;
+    text-align: center; border-radius: 8px;
+    font-size: 15px; font-weight: 600; text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .plan-btn:hover { opacity: 0.85; }
+  .btn-outline { border: 1px solid #334155; color: #e2e8f0; background: transparent; }
+  .btn-fill { background: #6366f1; color: #fff; border: none; cursor: pointer; }
+  .btn-dark { background: #1e293b; color: #e2e8f0; border: none; cursor: pointer; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">⚒ Forge CLI</div>
+  <div>
+    <a href="#">Docs</a>
+    <a href="#">GitHub</a>
+    <a href="#">Login</a>
+  </div>
+</nav>
+
+<div class="header">
+  <h1>Simple, transparent pricing</h1>
+  <p>Start free, scale when you're ready. No hidden fees, no usage surprises.</p>
+</div>
+
+<div class="pricing">
+  <!-- Hobbyist -->
+  <div class="plan">
+    <div class="plan-name">Hobbyist</div>
+    <div class="price">$0<span>/mo</span></div>
+    <div class="plan-desc">Perfect for side projects and personal use. Get started in minutes.</div>
+    <ul class="features">
+      <li>3 projects</li>
+      <li>10 builds/day</li>
+      <li>Community support</li>
+      <li>Basic CLI tools</li>
+      <li class="dim">Custom domains</li>
+    </ul>
+    <a href="#" class="plan-btn btn-outline">Get started free</a>
+  </div>
+
+  <!-- Pro (featured) -->
+  <div class="plan featured">
+    <div class="badge">Most Popular</div>
+    <div class="plan-name">Pro</div>
+    <div class="price">$19<span>/mo</span></div>
+    <div class="plan-desc">For professional developers building production-grade tools.</div>
+    <ul class="features">
+      <li>Unlimited projects</li>
+      <li>500 builds/day</li>
+      <li>Priority email support</li>
+      <li>Full CLI toolchain</li>
+      <li>Custom domains</li>
+    </ul>
+    <a href="#" class="plan-btn btn-fill">Start Pro trial</a>
+  </div>
+
+  <!-- Team -->
+  <div class="plan">
+    <div class="plan-name">Team</div>
+    <div class="price">$79<span>/mo</span></div>
+    <div class="plan-desc">For engineering teams that need collaboration and audit tooling.</div>
+    <ul class="features">
+      <li>Everything in Pro</li>
+      <li>Unlimited builds</li>
+      <li>Shared team secrets</li>
+      <li>Audit logs</li>
+      <li>Slack integration</li>
+    </ul>
+    <a href="#" class="plan-btn btn-dark">Start Team trial</a>
+  </div>
+</div>
+
+</body>
+</html>

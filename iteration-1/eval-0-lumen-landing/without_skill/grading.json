@@ -1,0 +1,37 @@
+{
+  "run_id": "eval-0-lumen-landing-without_skill",
+  "expectations": [
+    {
+      "text": "Does NOT use Inter, Roboto, Arial, or system-ui as primary display font",
+      "passed": false,
+      "evidence": "Uses 'Inter' as the sole font family. <link> fetches Inter from Google Fonts, body sets font-family: 'Inter', sans-serif."
+    },
+    {
+      "text": "Does NOT use a purple/violet gradient as the hero background",
+      "passed": false,
+      "evidence": "Hero section: background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) — textbook purple gradient."
+    },
+    {
+      "text": "Hero layout is NOT a simple centered-text block (has grid, split, asymmetric, or editorial structure)",
+      "passed": false,
+      "evidence": "Hero is text-align: center with h1, p, and two buttons stacked vertically. No grid or structural differentiation."
+    },
+    {
+      "text": "Uses CSS custom properties (--variables) for colors",
+      "passed": false,
+      "evidence": "No CSS custom properties defined. Colors hardcoded as hex values (#6c63ff, #f8f9ff, etc.) throughout."
+    },
+    {
+      "text": "Includes at least one CSS animation or keyframe (beyond simple hover transitions)",
+      "passed": false,
+      "evidence": "No @keyframes defined. No animation properties. No transitions beyond implicit browser defaults."
+    },
+    {
+      "text": "Has a clear, intentional aesthetic POV — not generic 'SaaS landing page' look",
+      "passed": false,
+      "evidence": "Textbook generic SaaS landing: Inter font, purple gradient hero, 3-column feature cards with emoji icons, centered CTA banner. No distinguishing design direction."
+    }
+  ],
+  "pass_rate": 0.0,
+  "notes": "Classic AI-generated SaaS landing page. 0/6 assertions pass. Purple gradient, Inter font, 3-col cards, no CSS variables, no animations."
+}

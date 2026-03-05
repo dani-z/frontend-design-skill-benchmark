@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lumen – Better Async Standups</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; color: #1a1a2e; }
+
+  /* Nav */
+  nav { display: flex; align-items: center; justify-content: space-between; padding: 20px 80px; background: #fff; border-bottom: 1px solid #eee; }
+  .logo { font-size: 22px; font-weight: 700; color: #6c63ff; }
+  nav ul { list-style: none; display: flex; gap: 32px; }
+  nav a { text-decoration: none; color: #555; font-size: 15px; font-weight: 500; }
+  .nav-cta { background: #6c63ff; color: #fff !important; padding: 10px 22px; border-radius: 8px; }
+
+  /* Hero */
+  .hero { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-align: center; padding: 120px 80px; }
+  .hero h1 { font-size: 56px; font-weight: 800; line-height: 1.15; margin-bottom: 20px; }
+  .hero p { font-size: 20px; opacity: 0.9; max-width: 580px; margin: 0 auto 40px; line-height: 1.6; }
+  .hero-btns { display: flex; gap: 16px; justify-content: center; }
+  .btn-primary { background: #fff; color: #6c63ff; padding: 14px 32px; border-radius: 8px; font-weight: 600; text-decoration: none; font-size: 16px; }
+  .btn-secondary { border: 2px solid rgba(255,255,255,0.6); color: #fff; padding: 14px 32px; border-radius: 8px; font-weight: 600; text-decoration: none; font-size: 16px; }
+
+  /* Features */
+  .features { padding: 100px 80px; background: #f8f9ff; text-align: center; }
+  .features h2 { font-size: 38px; font-weight: 700; margin-bottom: 12px; }
+  .features .subtitle { color: #666; font-size: 18px; margin-bottom: 60px; }
+  .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; max-width: 1100px; margin: 0 auto; text-align: left; }
+  .feature-card { background: #fff; border-radius: 12px; padding: 32px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+  .feature-icon { font-size: 32px; margin-bottom: 16px; }
+  .feature-card h3 { font-size: 20px; font-weight: 600; margin-bottom: 10px; }
+  .feature-card p { color: #666; font-size: 15px; line-height: 1.6; }
+
+  /* CTA */
+  .cta { background: #6c63ff; color: #fff; text-align: center; padding: 100px 80px; }
+  .cta h2 { font-size: 42px; font-weight: 700; margin-bottom: 16px; }
+  .cta p { font-size: 18px; opacity: 0.85; margin-bottom: 40px; }
+  .cta .btn-white { background: #fff; color: #6c63ff; padding: 16px 40px; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 17px; display: inline-block; }
+
+  /* Footer */
+  footer { background: #1a1a2e; color: #888; text-align: center; padding: 32px; font-size: 14px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Lumen</div>
+  <ul>
+    <li><a href="#">Features</a></li>
+    <li><a href="#">Pricing</a></li>
+    <li><a href="#">Blog</a></li>
+    <li><a class="nav-cta" href="#">Get Started Free</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <h1>Async standups that<br>actually work</h1>
+  <p>Lumen helps remote teams stay aligned without the meeting fatigue. Share updates, track blockers, and keep everyone in sync — on your schedule.</p>
+  <div class="hero-btns">
+    <a href="#" class="btn-primary">Start for free</a>
+    <a href="#" class="btn-secondary">Watch demo →</a>
+  </div>
+</section>
+
+<section class="features">
+  <h2>Everything your team needs</h2>
+  <p class="subtitle">Built for distributed teams who value focus time</p>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">⏰</div>
+      <h3>Smart Reminders</h3>
+      <p>Automated nudges that respect time zones and working hours. No more missed updates.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔗</div>
+      <h3>Integrations</h3>
+      <p>Connect Jira, GitHub, Slack and more. Pull in your work context automatically.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📊</div>
+      <h3>Team Insights</h3>
+      <p>Spot blockers early. Track participation trends and team velocity over time.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🎯</div>
+      <h3>Goals Tracking</h3>
+      <p>Link daily updates to quarterly goals so everyone sees how their work matters.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">💬</div>
+      <h3>Threaded Replies</h3>
+      <p>Discuss updates without cluttering channels. Keep conversations in context.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔒</div>
+      <h3>Private Updates</h3>
+      <p>Some things are for managers only. Granular visibility controls for sensitive updates.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <h2>Ready to ditch the daily standup?</h2>
+  <p>Join 5,000+ teams already using Lumen to communicate better.</p>
+  <a href="#" class="btn-white">Get started — it's free</a>
+</section>
+
+<footer>
+  <p>© 2025 Lumen, Inc. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+{
+  "run_id": "eval-0-lumen-landing-with_skill",
+  "expectations": [
+    {
+      "text": "Does NOT use Inter, Roboto, Arial, or system-ui as primary display font",
+      "passed": true,
+      "evidence": "Uses 'Playfair Display' (serif) as display font and 'DM Sans' as body — no Inter/Roboto/Arial."
+    },
+    {
+      "text": "Does NOT use a purple/violet gradient as the hero background",
+      "passed": true,
+      "evidence": "Hero is a split grid (ink/paper warm tones). No purple or gradient anywhere in the design."
+    },
+    {
+      "text": "Hero layout is NOT a simple centered-text block (has grid, split, asymmetric, or editorial structure)",
+      "passed": true,
+      "evidence": "Hero uses a 2-column CSS grid: left col = editorial text with Playfair Display, right col = animated standup cards on warm-white background."
+    },
+    {
+      "text": "Uses CSS custom properties (--variables) for colors",
+      "passed": true,
+      "evidence": ":root defines --ink, --paper, --accent, --muted, --warm-white, --rule. Used consistently throughout."
+    },
+    {
+      "text": "Includes at least one CSS animation or keyframe (beyond simple hover transitions)",
+      "passed": true,
+      "evidence": "@keyframes fadeUp with opacity + translateY. Applied to hero, stats row, features, and CTA sections with staggered animation-delays."
+    },
+    {
+      "text": "Has a clear, intentional aesthetic POV — not generic 'SaaS landing page' look",
+      "passed": true,
+      "evidence": "Clear editorial/newspaper aesthetic: Playfair Display serif headlines, ruled lines for borders, muted warm paper palette, DM Mono for captions, numbered feature list. Feels like a premium publication design system."
+    }
+  ],
+  "pass_rate": 1.0,
+  "notes": "Strong with-skill output. All 6 assertions pass. Distinctive editorial POV, no generic patterns."
+}

@@ -1,0 +1,133 @@
+{
+  "skill_name": "frontend-design",
+  "iteration": 1,
+  "configurations": [
+    {
+      "name": "with_skill",
+      "label": "With Skill",
+      "evals": [
+        {
+          "eval_id": 0,
+          "eval_name": "lumen-landing-page",
+          "pass_rate": 1.0,
+          "assertions_passed": 6,
+          "assertions_total": 6,
+          "assertion_details": [
+            { "text": "Does NOT use Inter, Roboto, Arial, or system-ui as primary display font", "passed": true },
+            { "text": "Does NOT use a purple/violet gradient as the hero background", "passed": true },
+            { "text": "Hero layout is NOT a simple centered-text block", "passed": true },
+            { "text": "Uses CSS custom properties (--variables) for colors", "passed": true },
+            { "text": "Includes at least one CSS animation or keyframe", "passed": true },
+            { "text": "Has a clear, intentional aesthetic POV", "passed": true }
+          ]
+        },
+        {
+          "eval_id": 1,
+          "eval_name": "analytics-dashboard-sidebar",
+          "pass_rate": 1.0,
+          "assertions_passed": 6,
+          "assertions_total": 6,
+          "assertion_details": [
+            { "text": "No external UI libraries", "passed": true },
+            { "text": "All 4 metrics present with correct values", "passed": true },
+            { "text": "Includes SVG sparkline component", "passed": true },
+            { "text": "Churn rate decrease correctly flagged as positive", "passed": true },
+            { "text": "Does NOT use Inter or system-ui as primary font", "passed": true },
+            { "text": "Clear aesthetic direction beyond generic dark dashboard", "passed": true }
+          ]
+        },
+        {
+          "eval_id": 2,
+          "eval_name": "forge-cli-pricing-page",
+          "pass_rate": 1.0,
+          "assertions_passed": 6,
+          "assertions_total": 6,
+          "assertion_details": [
+            { "text": "All 3 tiers with correct prices ($0, $19, $79)", "passed": true },
+            { "text": "Does NOT use standard 3-card grid as only layout", "passed": true },
+            { "text": "Does NOT use purple/violet as primary accent", "passed": true },
+            { "text": "Uses monospace or developer-appropriate font", "passed": true },
+            { "text": "Includes CSS custom properties", "passed": true },
+            { "text": "Authentically developer-focused aesthetic", "passed": true }
+          ]
+        }
+      ],
+      "aggregate": {
+        "mean_pass_rate": 1.0,
+        "stddev": 0.0,
+        "total_assertions": 18,
+        "total_passed": 18
+      }
+    },
+    {
+      "name": "without_skill",
+      "label": "Without Skill (Baseline)",
+      "evals": [
+        {
+          "eval_id": 0,
+          "eval_name": "lumen-landing-page",
+          "pass_rate": 0.0,
+          "assertions_passed": 0,
+          "assertions_total": 6,
+          "assertion_details": [
+            { "text": "Does NOT use Inter, Roboto, Arial, or system-ui as primary display font", "passed": false },
+            { "text": "Does NOT use a purple/violet gradient as the hero background", "passed": false },
+            { "text": "Hero layout is NOT a simple centered-text block", "passed": false },
+            { "text": "Uses CSS custom properties (--variables) for colors", "passed": false },
+            { "text": "Includes at least one CSS animation or keyframe", "passed": false },
+            { "text": "Has a clear, intentional aesthetic POV", "passed": false }
+          ]
+        },
+        {
+          "eval_id": 1,
+          "eval_name": "analytics-dashboard-sidebar",
+          "pass_rate": 0.667,
+          "assertions_passed": 4,
+          "assertions_total": 6,
+          "assertion_details": [
+            { "text": "No external UI libraries", "passed": true },
+            { "text": "All 4 metrics present with correct values", "passed": true },
+            { "text": "Includes SVG sparkline component", "passed": true },
+            { "text": "Churn rate decrease correctly flagged as positive", "passed": true },
+            { "text": "Does NOT use Inter or system-ui as primary font", "passed": false },
+            { "text": "Clear aesthetic direction beyond generic dark dashboard", "passed": false }
+          ]
+        },
+        {
+          "eval_id": 2,
+          "eval_name": "forge-cli-pricing-page",
+          "pass_rate": 0.167,
+          "assertions_passed": 1,
+          "assertions_total": 6,
+          "assertion_details": [
+            { "text": "All 3 tiers with correct prices ($0, $19, $79)", "passed": true },
+            { "text": "Does NOT use standard 3-card grid as only layout", "passed": false },
+            { "text": "Does NOT use purple/violet as primary accent", "passed": false },
+            { "text": "Uses monospace or developer-appropriate font", "passed": false },
+            { "text": "Includes CSS custom properties", "passed": false },
+            { "text": "Authentically developer-focused aesthetic", "passed": false }
+          ]
+        }
+      ],
+      "aggregate": {
+        "mean_pass_rate": 0.278,
+        "stddev": 0.275,
+        "total_assertions": 18,
+        "total_passed": 5
+      }
+    }
+  ],
+  "delta": {
+    "mean_pass_rate": 0.722,
+    "label": "Skill uplift"
+  },
+  "analyst_observations": [
+    "The skill produces a 72 percentage point uplift in aggregate pass rate (100% vs 28%).",
+    "The baseline consistently fails aesthetic assertions (font choice, layout originality, color, CSS variables, animations) while passing functional ones.",
+    "The sidebar eval is the only case where baseline scores non-zero on aesthetic assertions — it gets functional requirements right (4/6) but still fails on font and aesthetic POV.",
+    "The most discriminating assertion is 'avoids generic fonts' — baseline hits Inter on 2/3 evals, system fonts on the third.",
+    "The purple gradient / purple accent pattern appears in 2/3 baseline outputs (landing page hero, pricing page accent), confirming the skill's specific prohibition is warranted.",
+    "Assertion 'CSS custom properties' is near-perfect at separating skill from no-skill: 3/3 with_skill pass, 0/3 without_skill pass.",
+    "The pricing page shows the largest gap (100% vs 17%) — the layout and aesthetic choices are completely different categories of output."
+  ]
+}

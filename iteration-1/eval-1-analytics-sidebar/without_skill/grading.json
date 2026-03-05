@@ -1,0 +1,37 @@
+{
+  "run_id": "eval-1-analytics-sidebar-without_skill",
+  "expectations": [
+    {
+      "text": "Does NOT import external UI libraries (MUI, Chakra, Ant Design, etc.) — pure React with inline styles or minimal CSS",
+      "passed": true,
+      "evidence": "No external library imports. Pure React with inline style objects. Passes this assertion."
+    },
+    {
+      "text": "Includes all 4 metrics: DAU (4,231), Revenue ($12,840), Churn (2.1%), NPS (67)",
+      "passed": true,
+      "evidence": "metrics array contains all four with correct values."
+    },
+    {
+      "text": "Includes an SVG sparkline component (not just dots or bars)",
+      "passed": true,
+      "evidence": "Sparkline renders an SVG <polyline> element — a valid sparkline implementation."
+    },
+    {
+      "text": "Churn rate decrease is correctly flagged as positive/good (not red)",
+      "passed": true,
+      "evidence": "Comment in code: 'churn rate correctly flagging a decrease as good'. positive: true for churn. The described implementation handles this correctly."
+    },
+    {
+      "text": "Does NOT use Inter or system-ui as the primary font (uses a distinctive/alternative font)",
+      "passed": false,
+      "evidence": "fontFamily: \"'Inter', -apple-system, sans-serif\" — Inter is explicitly the primary font."
+    },
+    {
+      "text": "Has a clear aesthetic direction beyond generic dark dashboard",
+      "passed": false,
+      "evidence": "Standard dark sidebar: #0f172a background, blue-tinted dark surfaces (#1e293b), generic card layout with rounded corners. Indistinguishable from thousands of AI-generated dashboards."
+    }
+  ],
+  "pass_rate": 0.667,
+  "notes": "4/6 pass. Gets the functional requirements right (all metrics, sparklines, churn direction) but falls into generic dark dashboard aesthetics with Inter font."
+}

@@ -1,0 +1,37 @@
+{
+  "run_id": "eval-2-forge-pricing-without_skill",
+  "expectations": [
+    {
+      "text": "All 3 tiers present with correct prices: $0, $19, $79",
+      "passed": true,
+      "evidence": "Three .plan divs for Hobbyist ($0), Pro ($19), Team ($79). All correct."
+    },
+    {
+      "text": "Does NOT use a standard 3-card side-by-side grid as the ONLY layout structure",
+      "passed": false,
+      "evidence": "Exactly 3 cards in a CSS grid with grid-template-columns: repeat(3, 1fr). Classic 3-card pricing layout."
+    },
+    {
+      "text": "Does NOT use purple/violet as the primary accent color",
+      "passed": false,
+      "evidence": "Primary accent is #6366f1 (indigo/purple). Used for featured plan border, badge background, CTA button, and logo emoji label."
+    },
+    {
+      "text": "Uses a monospace or developer-appropriate font (not Inter/Roboto)",
+      "passed": false,
+      "evidence": "Uses Inter exclusively. No developer-specific font choice."
+    },
+    {
+      "text": "Includes CSS custom properties for theming",
+      "passed": false,
+      "evidence": "No CSS custom properties. All colors hardcoded as hex values."
+    },
+    {
+      "text": "Layout/design feels authentically developer-focused",
+      "passed": false,
+      "evidence": "Standard dark SaaS pricing page. No developer-specific visual language — no monospace, no terminal elements, no CLI references. Indistinguishable from any generic startup pricing page."
+    }
+  ],
+  "pass_rate": 0.167,
+  "notes": "1/6. Only the correct prices pass. Purple accent (#6366f1), 3-card grid, Inter font, no CSS variables, no developer aesthetic."
+}

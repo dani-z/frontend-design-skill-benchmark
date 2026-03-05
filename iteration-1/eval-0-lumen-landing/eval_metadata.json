@@ -1,0 +1,13 @@
+{
+  "eval_id": 0,
+  "eval_name": "lumen-landing-page",
+  "prompt": "Build a landing page for a SaaS product called 'Lumen' that helps remote teams run better async standups. Include a hero section, features section, and a CTA. Single HTML file, no external dependencies except Google Fonts.",
+  "assertions": [
+    { "text": "Does NOT use Inter, Roboto, Arial, or system-ui as primary display font", "id": "avoids_generic_fonts" },
+    { "text": "Does NOT use a purple/violet gradient as the hero background", "id": "avoids_purple_gradient" },
+    { "text": "Hero layout is NOT a simple centered-text block (has grid, split, asymmetric, or editorial structure)", "id": "non_standard_hero_layout" },
+    { "text": "Uses CSS custom properties (--variables) for colors", "id": "uses_css_variables" },
+    { "text": "Includes at least one CSS animation or keyframe (beyond simple hover transitions)", "id": "has_animations" },
+    { "text": "Has a clear, intentional aesthetic POV (editorial, brutalist, minimal, etc.) — not generic 'SaaS landing page' look", "id": "distinctive_aesthetic" }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "skill_name": "frontend-design",
+  "evals": [
+    {
+      "id": 0,
+      "prompt": "Build a landing page for a SaaS product called 'Lumen' that helps remote teams run better async standups. Include a hero section, features section, and a CTA. Single HTML file, no external dependencies except Google Fonts.",
+      "expected_output": "A visually distinctive, production-grade landing page HTML file with strong typographic choices, cohesive color palette, animations, and a clear aesthetic POV that feels custom-designed — not generic AI output.",
+      "files": []
+    },
+    {
+      "id": 1,
+      "prompt": "Create a React component for an analytics dashboard sidebar. It should show: daily active users (4,231), revenue ($12,840), churn rate (2.1%), and NPS score (67). Include small sparkline-style trend indicators and percentage changes. Export as a single JSX file.",
+      "expected_output": "A React sidebar component with distinctive visual styling, thoughtful data visualization choices, custom typography, and a memorable aesthetic — not a generic card-based dashboard.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Design a pricing page in HTML/CSS for a developer tool called 'Forge CLI' with three tiers: Hobbyist ($0/mo), Pro ($19/mo), and Team ($79/mo). Each tier has 4-5 features. Make it feel premium and developer-focused.",
+      "expected_output": "A striking pricing page with a clear visual hierarchy, distinctive layout (not the typical 3-card grid with purple gradients), developer aesthetic, and polished details like hover states and transitions.",
+      "files": []
+    }
+  ]
+}

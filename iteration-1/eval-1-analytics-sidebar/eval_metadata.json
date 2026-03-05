@@ -1,0 +1,13 @@
+{
+  "eval_id": 1,
+  "eval_name": "analytics-dashboard-sidebar",
+  "prompt": "Create a React component for an analytics dashboard sidebar. It should show: daily active users (4,231), revenue ($12,840), churn rate (2.1%), and NPS score (67). Include small sparkline-style trend indicators and percentage changes. Export as a single JSX file.",
+  "assertions": [
+    { "text": "Does NOT import external UI libraries (MUI, Chakra, Ant Design, etc.) — pure React with inline styles or minimal CSS", "id": "no_external_ui_libs" },
+    { "text": "Includes all 4 metrics: DAU (4,231), Revenue ($12,840), Churn (2.1%), NPS (67)", "id": "all_metrics_present" },
+    { "text": "Includes an SVG sparkline component (not just dots or bars)", "id": "has_sparkline" },
+    { "text": "Churn rate decrease is correctly flagged as positive/good (not red)", "id": "churn_direction_correct" },
+    { "text": "Does NOT use Inter or system-ui as the primary font (uses a distinctive/alternative font)", "id": "distinctive_typography" },
+    { "text": "Has a clear aesthetic direction beyond generic dark dashboard (editorial, newspaper, terminal, etc.)", "id": "distinctive_aesthetic" }
+  ]
+}

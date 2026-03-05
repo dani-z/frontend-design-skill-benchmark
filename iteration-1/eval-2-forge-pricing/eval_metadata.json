@@ -1,0 +1,13 @@
+{
+  "eval_id": 2,
+  "eval_name": "forge-cli-pricing-page",
+  "prompt": "Design a pricing page in HTML/CSS for a developer tool called 'Forge CLI' with three tiers: Hobbyist ($0/mo), Pro ($19/mo), and Team ($79/mo). Each tier has 4-5 features. Make it feel premium and developer-focused.",
+  "assertions": [
+    { "text": "All 3 tiers present with correct prices: $0, $19, $79", "id": "correct_prices" },
+    { "text": "Does NOT use a standard 3-card side-by-side grid as the ONLY layout structure", "id": "non_standard_layout" },
+    { "text": "Does NOT use purple/violet as the primary accent color", "id": "avoids_purple" },
+    { "text": "Uses a monospace or developer-appropriate font (not Inter/Roboto)", "id": "developer_font" },
+    { "text": "Includes CSS custom properties for theming", "id": "uses_css_variables" },
+    { "text": "Layout/design feels authentically developer-focused (terminal aesthetics, code-like elements, etc.) rather than generic SaaS pricing", "id": "developer_aesthetic" }
+  ]
+}
