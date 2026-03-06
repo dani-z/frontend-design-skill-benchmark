@@ -38,6 +38,10 @@ Each eval was graded on 6 assertions:
 
 **Prompt:** Build a landing page for a SaaS product called 'Lumen' that helps remote teams run better async standups. Include a hero section, features section, and a CTA. Single HTML file, no external dependencies except Google Fonts.
 
+| | With Skill | Without Skill |
+|---|---|---|
+| | ![Lumen landing page — with skill](assets/eval-0-with-skill.png) | ![Lumen landing page — without skill](assets/eval-0-without-skill.png) |
+
 | Assertion | With Skill | Without Skill |
 |-----------|:----------:|:-------------:|
 | Avoids generic fonts | ✅ Playfair Display + DM Sans | ❌ Inter |
@@ -57,6 +61,10 @@ Each eval was graded on 6 assertions:
 
 **Prompt:** Create a React component for an analytics dashboard sidebar showing DAU (4,231), Revenue ($12,840), Churn Rate (2.1%), and NPS Score (67). Include sparkline trend indicators and percentage changes. Export as a single JSX file.
 
+| | With Skill | Without Skill |
+|---|---|---|
+| | ![Analytics sidebar — with skill](assets/eval-1-with-skill.png) | ![Analytics sidebar — without skill](assets/eval-1-without-skill.png) |
+
 | Assertion | With Skill | Without Skill |
 |-----------|:----------:|:-------------:|
 | No external UI libraries | ✅ Pure React + inline styles | ✅ Pure React + inline styles |
@@ -75,6 +83,10 @@ Each eval was graded on 6 assertions:
 ### Eval 2 — Forge CLI pricing page
 
 **Prompt:** Design a pricing page in HTML/CSS for a developer tool called 'Forge CLI' with three tiers: Hobbyist ($0/mo), Pro ($19/mo), and Team ($79/mo). Each tier has 4–5 features. Make it feel premium and developer-focused.
+
+| | With Skill | Without Skill |
+|---|---|---|
+| | ![Forge CLI pricing — with skill](assets/eval-2-with-skill.png) | ![Forge CLI pricing — without skill](assets/eval-2-without-skill.png) |
 
 | Assertion | With Skill | Without Skill |
 |-----------|:----------:|:-------------:|
@@ -105,6 +117,14 @@ Each eval was graded on 6 assertions:
 ## Repository structure
 
 ```
+assets/
+  eval-0-with-skill.png             # Lumen landing — with skill screenshot
+  eval-0-without-skill.png          # Lumen landing — baseline screenshot
+  eval-1-with-skill.png             # Analytics sidebar — with skill screenshot
+  eval-1-without-skill.png          # Analytics sidebar — baseline screenshot
+  eval-2-with-skill.png             # Forge pricing — with skill screenshot
+  eval-2-without-skill.png          # Forge pricing — baseline screenshot
+
 evals/
   evals.json                        # Test prompts and assertion definitions
 
