@@ -1,6 +1,6 @@
 # frontend-design skill benchmark
 
-Benchmark comparing Claude's output quality **with** vs **without** the [`frontend-design`](https://github.com/anthropics/claude-skills) skill loaded.
+Benchmark comparing Claude's output quality **with** vs **without** the [`frontend-design`](https://github.com/anthropics/skills/tree/main/skills/frontend-design) skill loaded.
 
 3 realistic frontend tasks were run under both conditions. Each output was graded against 6 assertions measuring design quality, distinctiveness, and technical craft.
 
